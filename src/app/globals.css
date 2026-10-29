@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme inline {
+  --color-maroon: #7c0e44;
+  --color-maroon-deep: #5e0a33;
+  --color-maroon-ink: #4a0626;
+  --color-mauve: #aa5e7a;
+  --color-rose: #d49a9a;
+  --color-cream: #f2dace;
+
+  --font-display: var(--font-archivo), "Arial Black", sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-sans: var(--font-dm), system-ui, sans-serif;
+
+  --breakpoint-xs: 26rem;
+  --breakpoint-3xl: 112rem;
+
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-float: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-maroon);
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-maroon);
+  color: var(--color-cream);
+  font-family: var(--font-dm), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-rose);
+  color: var(--color-maroon-ink);
+}
+
+@layer components {
+/* Extra-wide heavy display face (Archivo at full width) */
+.font-display {
+  font-family: var(--font-archivo), "Arial Black", sans-serif;
+  font-weight: 900;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-style: italic;
+  color: var(--color-rose);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+}
+
+.h-section {
+  font-size: clamp(2.1rem, 7.4vw, 6.25rem);
+}
+}
+
+/* Film grain over everything */
+.grain {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Gingham behind the portrait */
+.gingham {
+  background-color: var(--color-cream);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgb(170 94 122 / 0.55) 0 14px,
+      transparent 14px 28px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(212 154 154 / 0.75) 0 14px,
+      transparent 14px 28px
+    );
+}
+
+/* Ticket notches */
+.ticket {
+  --notch: 11px;
+  mask:
+    radial-gradient(circle var(--notch) at var(--cut) 0, #0000 98%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle var(--notch) at var(--cut) 100%, #0000 98%, #000) bottom / 100% 51% no-repeat;
+}
+
+/* Custom cursor only on precise pointers */
+@media (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor button {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .animate-spin-slow,
+  .animate-float {
+    animation: none;
+  }
+}
