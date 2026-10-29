@@ -196,7 +196,7 @@ export function Hero() {
 
           <div className="relative -mt-[0.1em] w-fit">
             <motion.span
-              className="block font-serif text-[clamp(4.5rem,24vw,10rem)] italic leading-[0.95] text-rose lg:text-[clamp(5.5rem,11vw,13rem)]"
+              className="block font-serif text-[clamp(4.5rem,24vw,10rem)] italic leading-[0.95] text-rose lg:text-[clamp(5.5rem,11vw,10.5rem)]"
               initial={{ clipPath: "inset(0 100% 0 0)", x: -30 }}
               animate={play ? { clipPath: "inset(0 0% 0 0)", x: 0 } : {}}
               transition={{ duration: 1.4, ease: easeOut, delay: 0.6 }}

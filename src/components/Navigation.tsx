@@ -107,7 +107,7 @@ export function Navigation() {
                 >
                   <button
                     onClick={() => go(item.id)}
-                    className={`group flex items-center text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                    className={`group flex items-center font-display text-[13px] font-bold tracking-[0.14em] transition-colors ${
                       active === item.id ? "text-rose" : "text-cream hover:text-rose"
                     }`}
                   >

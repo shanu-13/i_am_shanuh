@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, DM_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Sans, Instrument_Serif, Syne } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers/Providers";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  axes: ["wdth"],
+  weight: ["700", "800"],
   display: "swap",
 });
 
@@ -21,6 +21,7 @@ const instrument = Instrument_Serif({
 const dm = DM_Sans({
   variable: "--font-dm",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
@@ -40,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${archivo.variable} ${instrument.variable} ${dm.variable}`}>
+    <html lang="en" className={`${syne.variable} ${instrument.variable} ${dm.variable}`}>
       <body className="antialiased">
         <Providers>{children}</Providers>
       </body>

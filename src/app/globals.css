@@ -9,7 +9,7 @@
   --color-rose: #d49a9a;
   --color-cream: #f2dace;
 
-  --font-display: var(--font-archivo), "Arial Black", sans-serif;
+  --font-display: var(--font-syne), "Arial Black", sans-serif;
   --font-serif: var(--font-instrument), Georgia, serif;
   --font-sans: var(--font-dm), system-ui, sans-serif;
 
@@ -53,12 +53,10 @@ body {
 }
 
 @layer components {
-/* Extra-wide heavy display face (Archivo at full width) */
+/* Heavy uppercase display face (Syne ExtraBold) */
 .font-display {
-  font-family: var(--font-archivo), "Arial Black", sans-serif;
-  font-weight: 900;
-  font-stretch: 125%;
-  font-variation-settings: "wdth" 125;
+  font-family: var(--font-syne), "Arial Black", sans-serif;
+  font-weight: 800;
   letter-spacing: -0.01em;
   line-height: 0.92;
   text-transform: uppercase;
